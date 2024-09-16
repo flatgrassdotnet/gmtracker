@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<body style="background-color: #C5FDFD; font-family: MS PGothic, sans-serif;">
+		<table style="overflow: scroll;">
+			<tr>
+				<th>Address</th>
+				<th>Name</th>
+				<th>Version</th>
+				<th>Region</th>
+				<th>Players</th>
+				<th>Bots</th>
+				<th>Map</th>
+				<th>Secure</th>
+				<th>Dedicated</th>
+				<th>OS</th>
+				<th>GameType</th>
+			</tr>
+			{{range .Servers}}
+				<tr>
+					<td>{{.Address}}</td>
+					<td>{{.Name}}</td>
+					<td>{{.Version}}</td>
+					<td>{{regionstring .Region}}</td>
+					<td>{{.Players}}/{{.MaxPlayers}}</td>
+					<td>{{.Bots}}</td>
+					<td>{{.Map}}</td>
+					<td>{{if .Secure}}Yes{{else}}No{{end}}</td>
+					<td>{{if .Dedicated}}Yes{{else}}No{{end}}</td>
+					<td>{{if eq .OS "w"}}Windows{{else if eq .OS "l"}}Linux{{else if eq .OS "m"}}Mac{{end}}</td>
+					<td>{{.GameType}}</td>
+				</tr>
+			{{end}}
+		</table>
+		<hr>
+		<span style="font-style: italic;"><a href="https://github.com/patapancakes/gmtracker">gmtracker</a> by <a href="mailto:patapancakes@pagefault.games">Pancakes</a> &mdash; Last updated at {{.LastUpdate}}</span>
+	</body>
+</html>
