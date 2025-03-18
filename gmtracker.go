@@ -32,7 +32,7 @@ import (
 var (
 	cache Cache
 	key   string
-	tmpl  = template.Must(template.New("response.html").Funcs(template.FuncMap{"regionstring": regionstring}).ParseFiles("templates/response.html"))
+	tmpl  = template.Must(template.New("list.html").Funcs(template.FuncMap{"regionstring": regionstring}).ParseFiles("templates/list.html"))
 )
 
 type Cache struct {
