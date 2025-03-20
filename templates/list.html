@@ -3,7 +3,28 @@
 	<head>
 		<title>Garry's Mod Servers</title>
 		<style type="text/css">
-			body {font-family: MS PGothic, sans-serif;}
+			html {background: darkgrey; width: 100vw; height: 100vh; align-content: center; box-sizing: border-box; overflow: hidden; color-scheme: dark;}
+
+			body {background: #838383; color: #D9D9D9; font-family: Tahoma, sans-serif; width: 820px; max-width: 100vw; max-height: 100vh; overflow: auto; padding: 8px; border-radius: 6px; margin: auto; padding-top: 4px; box-sizing: border-box;}
+			body:before {content:"Garry's Mod 12 Server List"; font-size: 11px; color:white; font-weight:bold; padding-left:2px;}
+
+			table, th, hr + span a {border: 1px solid black; border-color: #BCBCBC #484848 #484848 #BCBCBC;}
+
+			table {background: #5E5E5E; font-size: 11px; overflow:auto; border-spacing: 0; width:100%; border-color: #383838 #626262 #424242 #B5B5B5; display:block; text-wrap:nowrap; margin-top:6px;}
+
+			th {text-align: left; color: white; font-weight: normal; padding: 2px 4px; width: 1%;}
+
+			tr:not(:first-child):hover {background-color: #FF9C00; color: black;}
+
+			td {padding: 2px 5px; width: 1%;}
+			td:nth-child(2) {width: 100%; text-wrap: wrap; word-break: break-word; min-width: 150px;}
+			td:last-child {max-width: 200px;}
+
+			hr {border-top: 1px solid #484848; border-bottom: 1px solid #BCBCBC;}
+			hr + span {font-style: normal !important; font-size: 12px; display: block;}
+			hr + span a {color: white; text-decoration: none; padding: 4px 6px 5px 6px; display: inline-block; box-sizing: border-box;}
+			hr + span a:hover {background-color: rgba(255,255,255,0.2);}
+			hr + span a:active {border-color: #484848 #BCBCBC #BCBCBC #484848;}
 		</style>
 	</head>
 	<body>
@@ -23,17 +44,17 @@
 				<tr>
 					<td>{{.Address}}</td>
 					<td>{{.Name}}</td>
-					<td>{{regionstring .Region}}</td>
+					<td>{{region .Region}}</td>
 					<td>{{.Players}}/{{.MaxPlayers}}</td>
 					<td>{{.Map}}</td>
 					<td>{{if .Secure}}Yes{{else}}No{{end}}</td>
 					<td>{{if .Dedicated}}Yes{{else}}No{{end}}</td>
-					<td>{{if eq .OS "w"}}Windows{{else if eq .OS "l"}}Linux{{else if eq .OS "m"}}Mac{{end}}</td>
+					<td>{{platform .OS}}</td>
 					<td>{{.GameType}}</td>
 				</tr>
 			{{end}}
 		</table>
 		<hr>
-		<span style="font-style: italic;"><a href="https://github.com/flatgrassdotnet/gmtracker">gmtracker</a> by <a href="https://github.com/patapancakes">Pancakes</a> &mdash; Last updated at {{.LastUpdate.Format "3:04PM MST"}}</span>
+		<span><a href="https://github.com/flatgrassdotnet/gmtracker">gmtracker</a> by <a href="https://github.com/patapancakes">Pancakes</a> &mdash; Last updated at {{.LastUpdate.Format "3:04PM MST"}}</span>
 	</body>
 </html>

@@ -32,7 +32,7 @@ import (
 var (
 	cache Cache
 	key   string
-	tmpl  = template.Must(template.New("list.html").Funcs(template.FuncMap{"regionstring": regionstring}).ParseFiles("templates/list.html"))
+	tmpl  = template.Must(template.New("list.html").Funcs(template.FuncMap{"region": region, "platform": platform}).ParseFiles("templates/list.html"))
 )
 
 type Cache struct {
@@ -125,7 +125,7 @@ func update() (Cache, error) {
 	return cache, nil
 }
 
-func regionstring(region int) string {
+func region(region int) string {
 	switch region {
 	case 0:
 		return "US - East"
@@ -146,4 +146,17 @@ func regionstring(region int) string {
 	}
 
 	return "World"
+}
+
+func platform(platform string) string {
+	switch platform {
+	case "w":
+		return "Windows"
+	case "m":
+		return "Mac"
+	case "l":
+		return "Linux"
+	}
+
+	return "Other"
 }
