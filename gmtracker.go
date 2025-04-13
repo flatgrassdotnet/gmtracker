@@ -105,7 +105,7 @@ func update() (Cache, error) {
 
 	v := make(url.Values)
 
-	v.Add("filter", `\appid\4000\version_match\1.0.38.0`)
+	v.Add("filter", `\appid\4000\version_match\1.*`)
 	v.Add("key", key)
 
 	r, err := http.Get(fmt.Sprintf("https://api.steampowered.com/IGameServersService/GetServerList/v1/?%s", v.Encode()))
